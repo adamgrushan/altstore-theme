@@ -17,7 +17,7 @@
   --rule:           #d2d2d7;
 
   /* Layout */
-  --measure:        700px;   /* Sumo's content column */
+  --measure:        900px;   /* matches the footer row */
   --measure-wide:   980px;   /* site banner only */
   --gutter:         20px;
 }
