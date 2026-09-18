@@ -4,7 +4,7 @@
 
 :root {
   /* Type */
-  --font-sans: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: Poppins, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 
   /* Palette */
   --ink:            #1c1d1d;   /* faq.altstore.io */
@@ -182,7 +182,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   font-size: clamp(2rem, 2rem + ((1vw - 0.234rem) * 0.616), 2.25rem);
   font-weight: 500;
   letter-spacing: -0.003em;
-  line-height: 1;
+  line-height: 1.1;   /* Poppins descenders collide at Stratechery's 1.0 */
 }
 
 .standfirst {
@@ -374,7 +374,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   font-size: 27px;
   font-weight: 500;
   letter-spacing: -0.015em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 .story__title a { color: var(--ink); }
 .story__title a:hover { color: var(--accent); text-decoration: none; }
@@ -421,7 +421,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   font-size: 36px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 /* --- Category index ------------------------------------------------------- */
