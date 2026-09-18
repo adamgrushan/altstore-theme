@@ -9,7 +9,7 @@
 {{ with .Params.kicker }}{{ $kicker = . }}{{ end }}
 {{ if not $kicker }}{{ $kicker = partial "first-value.html" .Params.categories }}{{ end }}
 
-<article class="story h-entry {{ if .Title }}story--titled{{ else }}story--micro{{ end }}">
+<article class="story h-entry {{ if .Title }}story--titled{{ if $thumb }} story--illustrated{{ end }}{{ else }}story--micro{{ end }}">
 
   {{ if .Title }}
 
