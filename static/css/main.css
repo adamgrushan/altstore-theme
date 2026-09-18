@@ -376,6 +376,63 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   letter-spacing: -0.02em;
 }
 
+/* --- Category index ------------------------------------------------------- */
+
+.term-list {
+  list-style: none;
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  padding: 48px var(--gutter) 0;
+}
+
+.term {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+.term:last-child { border-bottom: 0; }
+
+.term__link {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  color: var(--ink);
+}
+.term__link:hover { color: var(--accent); text-decoration: none; }
+
+.term__name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.term__count {
+  flex: none;
+  padding: 2px 10px;
+  background: var(--bg-subtle);
+  border-radius: 100px;
+  color: var(--ink-tertiary);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.term__recent {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: var(--ink-secondary);
+}
+.term__recent a { color: var(--ink-secondary); }
+.term__recent a:hover { color: var(--accent); }
+
+.term__date {
+  color: var(--ink-tertiary);
+  white-space: nowrap;
+}
+.term__date::before { content: " · "; }
+
+.term-empty { color: var(--ink-secondary); }
+
 /* --- Meta, tags, replies -------------------------------------------------- */
 
 .content-meta { margin-top: 44px; }
@@ -480,6 +537,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
   .story__title { font-size: 22px; }
   .category-title { font-size: 30px; }
+  .term__name { font-size: 21px; }
   .stories { padding-top: 32px; }
 }
 
