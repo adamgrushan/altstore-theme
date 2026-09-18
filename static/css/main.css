@@ -117,8 +117,9 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 .site-archive {
   margin-left: auto;
   color: var(--accent-dark);
-  font-size: 16px;
+  font-size: 24px;          /* altstore.io's User Guide */
   font-weight: 500;
+  line-height: 1.2;
 }
 .site-archive:hover { color: var(--ink); text-decoration: none; }
 
@@ -633,7 +634,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   /* Keep the banner on one line so it holds its 88px height. */
   .site-header__inner { gap: 14px; }
   .site-social { gap: 12px; padding-left: 12px; }
-  .site-archive { font-size: 15px; }
+  .site-archive { font-size: 17px; }
 
   .story__title { font-size: 23px; }
   .category-title { font-size: 30px; }
