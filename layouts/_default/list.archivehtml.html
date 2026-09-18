@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ if templates.Exists "partials/microhook-archive-post-list.html" }}
+{{ partial "microhook-archive-post-list.html" . }}
+{{ else }}
+
+<div class="archive">
+  <header class="archive-header">
+    <h1 class="p-name category-title">{{ .Title | default "Archive" }}</h1>
+    {{ with .Content }}<div class="microblog_category_intro">{{ . }}</div>{{ end }}
+  </header>
+
+  {{ $posts := where .Site.Pages "Type" "post" }}
+
+  <div class="archive-list h-feed">
+    {{ range $posts.GroupByDate "2006" }}
+    <section class="archive-year">
+      <h2 class="archive-year__label">{{ .Key }}</h2>
+      <ul>
+        {{ range .Pages }}
+        <li class="archive-entry h-entry">
+          <a class="archive-entry__link u-url" href="{{ .RelPermalink }}">
+            <time class="archive-entry__date dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+              {{ partial "dateformat/short" . }}
+            </time>
+            <span class="archive-entry__title{{ if not .Title }} archive-entry__title--micro{{ end }}">
+              {{ with .Title }}{{ . }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 90 }}{{ end }}
+            </span>
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}
+{{ end }}
