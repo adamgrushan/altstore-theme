@@ -1,0 +1,13 @@
+{{/* Micro.blog params arrive as either a list or a bare scalar — `categories:
+     ["Essays"]` and `categories: "Essays"` are both valid. `first` only
+     iterates sequences, so normalise to a single value here.
+     Usage: {{ $x := partial "first-value.html" .Params.photos }} */}}
+{{ $value := "" }}
+{{ with . }}
+  {{ if reflect.IsSlice . }}
+    {{ range first 1 . }}{{ $value = . }}{{ end }}
+  {{ else }}
+    {{ $value = . }}
+  {{ end }}
+{{ end }}
+{{ return $value }}

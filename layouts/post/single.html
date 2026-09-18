@@ -3,14 +3,15 @@
 {{/* Hero image: an explicit featured_image wins, otherwise the post's first photo. */}}
 {{ $hero := "" }}
 {{ with .Params.featured_image }}{{ $hero = . }}{{ end }}
-{{ if not $hero }}{{ with .Params.photos }}{{ range first 1 . }}{{ $hero = . }}{{ end }}{{ end }}{{ end }}
+{{ if not $hero }}{{ $hero = partial "first-value.html" .Params.photos }}{{ end }}
 
 {{/* Kicker: an explicit kicker param wins, otherwise the first category. */}}
 {{ $kicker := "" }}
 {{ with .Params.kicker }}{{ $kicker = . }}{{ end }}
-{{ if not $kicker }}{{ with .Params.categories }}{{ range first 1 . }}{{ $kicker = . }}{{ end }}{{ end }}{{ end }}
+{{ if not $kicker }}{{ $kicker = partial "first-value.html" .Params.categories }}{{ end }}
 
-<article class="article h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
+{{/* GetTerms is shape-agnostic; .Params.categories may be a bare string. */}}
+<article class="article h-entry {{ range .GetTerms "categories" }} {{ .LinkTitle | urlize | lower }}{{ end }}">
 
   {{ if templates.Exists "partials/microhook-before-post.html" }}
   {{ partial "microhook-before-post.html" . }}

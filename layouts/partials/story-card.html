@@ -3,11 +3,11 @@
 
 {{ $thumb := "" }}
 {{ with .Params.featured_image }}{{ $thumb = . }}{{ end }}
-{{ if not $thumb }}{{ with .Params.photos }}{{ range first 1 . }}{{ $thumb = . }}{{ end }}{{ end }}{{ end }}
+{{ if not $thumb }}{{ $thumb = partial "first-value.html" .Params.photos }}{{ end }}
 
 {{ $kicker := "" }}
 {{ with .Params.kicker }}{{ $kicker = . }}{{ end }}
-{{ if not $kicker }}{{ with .Params.categories }}{{ range first 1 . }}{{ $kicker = . }}{{ end }}{{ end }}{{ end }}
+{{ if not $kicker }}{{ $kicker = partial "first-value.html" .Params.categories }}{{ end }}
 
 <article class="story h-entry {{ if .Title }}story--titled{{ else }}story--micro{{ end }}">
 
