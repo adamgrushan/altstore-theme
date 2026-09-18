@@ -1,0 +1,69 @@
+{{/* One item in a listing. Titled posts render as story cards; titleless
+     microposts render inline, the way Micro.blog timelines expect. */}}
+
+{{ $thumb := "" }}
+{{ with .Params.featured_image }}{{ $thumb = . }}{{ end }}
+{{ if not $thumb }}{{ range first 1 .Params.photos }}{{ $thumb = . }}{{ end }}{{ end }}
+
+{{ $kicker := "" }}
+{{ with .Params.kicker }}{{ $kicker = . }}{{ end }}
+{{ if not $kicker }}{{ range first 1 .Params.categories }}{{ $kicker = . }}{{ end }}{{ end }}
+
+<article class="story h-entry {{ if .Title }}story--titled{{ else }}story--micro{{ end }}">
+
+  {{ if .Title }}
+
+  {{ if $thumb }}
+  <a class="story__image" href="{{ .Permalink }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ $thumb }}" alt="" loading="lazy">
+  </a>
+  {{ end }}
+
+  <div class="story__text">
+    {{ if $kicker }}<p class="kicker">{{ $kicker }}</p>{{ end }}
+
+    <h2 class="story__title p-name"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+
+    {{ if in .RawContent "<!--more-->" }}
+    <div class="story__summary p-summary">
+      {{ $split := split .RawContent "<!--more-->" }}
+      {{ $summary := index $split 0 }}
+      {{ $summary = replaceRE "\\[\\^.*?\\]" "" $summary }}
+      {{ $summary = replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
+      {{ $summary | markdownify }}
+    </div>
+    {{ else if .Params.custom_summary }}
+    <div class="story__summary p-summary">{{ .Summary | safeHTML }}</div>
+    {{ else }}
+    <div class="story__summary p-summary">{{ .Summary | plainify | truncate 180 }}</div>
+    {{ end }}
+
+    <div class="story__meta">
+      <a href="{{ .Permalink }}" class="u-url">
+        <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+          {{ partial "dateformat/long" . }}
+        </time>
+      </a>
+    </div>
+  </div>
+
+  {{ else }}
+
+  <div class="story__text">
+    <div class="e-content without-title">{{ .Content }}</div>
+    <div class="story__meta">
+      <a href="{{ .Permalink }}" class="u-url">
+        <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+          {{ partial "dateformat/long" . }}
+        </time>
+      </a>
+    </div>
+  </div>
+
+  {{ end }}
+
+  {{ if templates.Exists "partials/microhook-below-post-in-list.html" }}
+  {{ partial "microhook-below-post-in-list.html" . }}
+  {{ end }}
+
+</article>

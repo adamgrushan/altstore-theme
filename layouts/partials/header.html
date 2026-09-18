@@ -1,0 +1,35 @@
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+
+    {{ if templates.Exists "partials/microhook-title.html" }}
+    {{ partial "microhook-title.html" . }}
+    {{ else }}
+    <a class="site-title p-name u-url" href="/">{{ .Site.Title }}</a>
+    {{ end }}
+
+    {{ if templates.Exists "partials/microhook-navigation.html" }}
+    {{ partial "microhook-navigation.html" . }}
+    {{ else }}
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {{ if templates.Exists "partials/microhook-inline-nav-begin.html" }}
+        {{ partial "microhook-inline-nav-begin.html" . }}
+        {{ end }}
+        {{ range .Site.Menus.main }}
+        {{ if .Page.Params.redirect_url }}
+        <li><a class="page-link" href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
+        {{ else }}
+        <li><a class="page-link" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+        {{ end }}
+        {{ end }}
+        {{ if templates.Exists "partials/microhook-inline-nav-end.html" }}
+        {{ partial "microhook-inline-nav-end.html" . }}
+        {{ end }}
+      </ul>
+    </nav>
+    {{ end }}
+
+  </div>
+</header>
