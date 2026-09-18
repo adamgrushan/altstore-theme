@@ -3,32 +3,24 @@
 <header class="site-header">
   <div class="site-header__inner">
 
-    {{ if templates.Exists "partials/microhook-title.html" }}
-    {{ partial "microhook-title.html" . }}
-    {{ else }}
-    <a class="site-title p-name u-url" href="/">{{ .Site.Title }}</a>
-    {{ end }}
+    <a class="site-logo" href="https://altstore.io">
+      <img src="{{ "images/logo_text.png" | relURL }}" alt="AltStore" width="107" height="26">
+    </a>
 
-    {{ if templates.Exists "partials/microhook-navigation.html" }}
-    {{ partial "microhook-navigation.html" . }}
-    {{ else }}
-    <nav class="site-nav" aria-label="Main">
-      <ul>
-        {{ if templates.Exists "partials/microhook-inline-nav-begin.html" }}
-        {{ partial "microhook-inline-nav-begin.html" . }}
-        {{ end }}
-        {{ range .Site.Menus.main }}
-        {{/* Config-defined menu entries have no backing page. */}}
-        {{ $href := .URL | relLangURL }}
-        {{ with .Page }}{{ with .Params.redirect_url }}{{ $href = . }}{{ end }}{{ end }}
-        <li><a class="page-link" href="{{ $href | safeURL }}">{{ .Name }}</a></li>
-        {{ end }}
-        {{ if templates.Exists "partials/microhook-inline-nav-end.html" }}
-        {{ partial "microhook-inline-nav-end.html" . }}
-        {{ end }}
-      </ul>
+    <nav class="site-social" aria-label="AltStore elsewhere">
+      <a href="https://www.patreon.com/rileyshane" target="_blank" rel="noopener" aria-label="AltStore on Patreon">
+        {{ partial "icons/patreon.html" . }}
+      </a>
+      <a href="https://github.com/altstoreio/AltStore" target="_blank" rel="noopener" aria-label="AltStore on GitHub">
+        {{ partial "icons/github.html" . }}
+      </a>
+      <a href="https://twitter.com/altstoreio" target="_blank" rel="noopener" aria-label="AltStore on X">
+        {{ partial "icons/x.html" . }}
+      </a>
+      <a href="https://fosstodon.org/@altstore" target="_blank" rel="noopener" aria-label="AltStore on Mastodon">
+        {{ partial "icons/mastodon.html" . }}
+      </a>
     </nav>
-    {{ end }}
 
   </div>
 </header>

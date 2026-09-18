@@ -97,29 +97,36 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   flex-wrap: wrap;
 }
 
-.site-title {
-  color: var(--ink);
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-.site-title:hover { color: var(--ink); text-decoration: none; }
+.site-logo { display: block; flex: none; }
 
-.site-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.site-logo img {
+  display: block;
+  width: 107px;
+  height: auto;
+}
+
+/* The wordmark ships as black artwork; flip it for dark mode. */
+@media (prefers-color-scheme: dark) {
+  .site-logo img { filter: invert(1); }
+}
+
+.site-social {
   display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
 }
 
-.site-nav a {
-  color: var(--ink-secondary);
-  font-size: 14px;
-  font-weight: 400;
+.site-social a {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  color: var(--ink);
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
 }
-.site-nav a:hover { color: var(--ink); text-decoration: none; }
+.site-social a:hover { opacity: 1; text-decoration: none; }
+.site-social svg { width: 100%; height: 100%; }
 
 /* --- Page shell ----------------------------------------------------------- */
 
@@ -195,9 +202,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin: 0 0 40px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--rule);
+  margin: 0 0 20px;
   color: var(--ink-tertiary);
   font-size: 14px;
 }
@@ -205,6 +210,54 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 .article-byline a { color: var(--ink-tertiary); }
 .article-byline a:hover { color: var(--ink); }
 .byline-sep { color: var(--rule); }
+
+/* --- Share row ------------------------------------------------------------ */
+
+.share {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 40px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.share li { display: flex; align-items: center; }
+
+.share__btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.share__btn:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+.share__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.share__btn svg { width: 15px; height: 15px; }
+
+.share__toast {
+  margin-left: 8px;
+  color: var(--ink-tertiary);
+  font-size: 13px;
+}
 
 /* --- Article body --------------------------------------------------------- */
 
@@ -544,7 +597,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 /* --- Print ---------------------------------------------------------------- */
 
 @media print {
-  .site-header, .site-footer, .reply-buttons, .comments, .post-nav { display: none; }
+  .site-header, .site-footer, .reply-buttons, .comments, .post-nav, .share { display: none; }
   body { font-size: 12pt; color: #000; background: #fff; }
   .article-header, .article-body { max-width: none; }
 }

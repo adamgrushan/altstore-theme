@@ -47,9 +47,9 @@
           {{ partial "dateformat/long" . }}
         </time>
       </a>
-      {{ with .Site.Params.author.name }}<span class="byline-sep">·</span><span class="byline-author p-author">{{ . }}</span>{{ end }}
-      {{ with .ReadingTime }}<span class="byline-sep">·</span><span>{{ . }} min read</span>{{ end }}
     </div>
+
+    {{ partial "share.html" . }}
     {{ end }}
   </header>
 
