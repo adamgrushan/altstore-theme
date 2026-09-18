@@ -291,7 +291,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   padding: 0 0 0 20px;
   border-left: 3px solid var(--accent);
   color: var(--ink-secondary);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -307,7 +307,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   background: var(--bg-subtle);
   border-radius: 8px;
   overflow-x: auto;
-  font-size: 17px;
+  font-size: 0.85em;
   line-height: 1.5;
 }
 
@@ -323,7 +323,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   width: 100%;
   margin: 0 0 22px;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 18px;
 }
 .article-body th,
 .article-body td {
@@ -468,7 +468,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .term__recent {
   margin: 6px 0 0;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--ink-secondary);
 }
 .term__recent a { color: var(--ink-secondary); }
@@ -527,7 +527,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   font-variant-numeric: tabular-nums;
 }
 
-.archive-entry__title { font-size: 16px; }
+.archive-entry__title { font-size: 18px; }
 .archive-entry__title--micro { color: var(--ink-secondary); }
 
 @media (max-width: 600px) {
@@ -576,7 +576,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   background: none;
   color: var(--ink-secondary);
   font-family: inherit;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
 }
 .button:hover,
@@ -683,12 +683,12 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
     gap: 16px;
   }
   .story__image img { aspect-ratio: 16 / 9; }
-  .stories__item--lead .story__title { font-size: 30px; }
+  .stories__item--lead .story__title { font-size: 27px; }
 }
 
 @media (max-width: 600px) {
   /* Sumo holds its 18px base on small screens; only display headings step down. */
-  .standfirst { font-size: 19px; }
+  .standfirst { font-size: 18px; }
   .article-header { padding-top: 32px; }
   .article-hero { margin-bottom: 28px; }
   .article-hero img { max-height: 50vh; }
@@ -700,9 +700,9 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   .site-social a { width: 24px; height: 24px; }
   .site-archive { font-size: 16px; }
 
-  .story__title { font-size: 23px; }
-  .category-title { font-size: 30px; }
-  .term__name { font-size: 23px; }
+  .story__title { font-size: 20px; }
+  .category-title { font-size: 27px; }
+  .term__name { font-size: 20px; }
   .stories { padding-top: 32px; }
 }
 
