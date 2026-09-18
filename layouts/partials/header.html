@@ -18,11 +18,10 @@
         {{ partial "microhook-inline-nav-begin.html" . }}
         {{ end }}
         {{ range .Site.Menus.main }}
-        {{ if .Page.Params.redirect_url }}
-        <li><a class="page-link" href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
-        {{ else }}
-        <li><a class="page-link" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
-        {{ end }}
+        {{/* Config-defined menu entries have no backing page. */}}
+        {{ $href := .URL | relLangURL }}
+        {{ with .Page }}{{ with .Params.redirect_url }}{{ $href = . }}{{ end }}{{ end }}
+        <li><a class="page-link" href="{{ $href | safeURL }}">{{ .Name }}</a></li>
         {{ end }}
         {{ if templates.Exists "partials/microhook-inline-nav-end.html" }}
         {{ partial "microhook-inline-nav-end.html" . }}
