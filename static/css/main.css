@@ -177,10 +177,11 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .article-title {
   margin: 0 0 20px;
-  font-size: 36px;
+  /* Stratechery's Article title: clamp(2rem … 2.25rem). */
+  font-size: clamp(2rem, 2rem + ((1vw - 0.234rem) * 0.616), 2.25rem);
   font-weight: 700;
   letter-spacing: -0.003em;
-  line-height: 1.3;
+  line-height: 1.15;
 }
 
 .standfirst {
@@ -257,18 +258,18 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .article-body h2 {
   margin: 44px 0 12px;
-  font-size: 27px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .article-body h3 {
   margin: 32px 0 10px;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .article-body ul,
@@ -624,10 +625,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 @media (max-width: 600px) {
   /* Sumo holds its 18px base on small screens; only display headings step down. */
-  .article-title { font-size: 30px; letter-spacing: -0.01em; }
   .standfirst { font-size: 19px; }
-  .article-body h2 { font-size: 24px; }
-  .article-body h3 { font-size: 20px; }
   .article-header { padding-top: 32px; }
   .article-hero { margin-bottom: 28px; }
   .article-hero img { max-height: 50vh; }
