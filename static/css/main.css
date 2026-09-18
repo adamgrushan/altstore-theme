@@ -89,7 +89,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .site-logo img {
   display: block;
-  width: 107px;
+  width: 124px;   /* altstore.io */
   height: auto;
 }
 
@@ -634,6 +634,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
   /* Keep the banner on one line so it holds its 88px height. */
   .site-header__inner { gap: 10px; }
+  .site-logo img { width: 107px; }
   .site-social { gap: 10px; padding-left: 12px; }
   .site-social a { width: 24px; height: 24px; }
   .site-archive { font-size: 16px; }
