@@ -32,7 +32,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -107,11 +107,12 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   place-items: center;
   width: 30px;
   height: 30px;
-  color: var(--ink);
-  opacity: 0.75;
+  /* altstore.io's icons are pure black at full strength. */
+  color: #000;
+  opacity: 1;
   transition: opacity 0.15s ease;
 }
-.site-social a:hover { opacity: 1; text-decoration: none; }
+.site-social a:hover { opacity: 0.7; text-decoration: none; }
 .site-social svg { width: 100%; height: 100%; }
 
 .site-archive {
@@ -179,7 +180,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 .article-title {
   margin: 0 0 20px;
   /* Stratechery's Article title: clamp(2rem … 2.25rem). */
-  font-size: clamp(2rem, 2rem + ((1vw - 0.234rem) * 0.616), 2.25rem);
+  font-size: clamp(1.667rem, 1.667rem + ((1vw - 0.234rem) * 0.513), 1.875rem);
   font-weight: 500;
   letter-spacing: -0.003em;
   line-height: 1.1;   /* Poppins descenders collide at Stratechery's 1.0 */
@@ -188,7 +189,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 .standfirst {
   margin: 0 0 24px;
   color: var(--ink-secondary);
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.45;
   font-weight: 400;
 }
@@ -259,7 +260,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .article-body h2 {
   margin: 44px 0 12px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.5;
@@ -267,7 +268,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .article-body h3 {
   margin: 32px 0 10px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.5;
@@ -290,7 +291,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   padding: 0 0 0 20px;
   border-left: 3px solid var(--accent);
   color: var(--ink-secondary);
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -306,7 +307,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   background: var(--bg-subtle);
   border-radius: 8px;
   overflow-x: auto;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -322,7 +323,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   width: 100%;
   margin: 0 0 22px;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 14px;
 }
 .article-body th,
 .article-body td {
@@ -371,7 +372,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .story__title {
   margin: 0 0 10px;
-  font-size: 27px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.015em;
   line-height: 1.15;
@@ -382,7 +383,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 .story__summary {
   margin: 0 0 12px;
   color: var(--ink-secondary);
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.5;
 }
 .story__summary p { margin: 0 0 10px; }
@@ -396,11 +397,11 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   gap: 20px;
 }
 .stories__item--lead .story__image img { aspect-ratio: 21 / 9; }
-.stories__item--lead .story__title { font-size: 36px; letter-spacing: -0.02em; }
+.stories__item--lead .story__title { font-size: 30px; letter-spacing: -0.02em; }
 .stories__item--lead .story__summary { font-size: 18px; }
 
 /* Titleless microposts read as plain entries. */
-.story--micro .e-content { font-size: 18px; }
+.story--micro .e-content { font-size: 15px; }
 .story--micro .e-content p { margin: 0 0 12px; }
 .story--micro .e-content img {
   max-width: 100%;
@@ -418,7 +419,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 .category-title {
   margin: 0;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -449,7 +450,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
 .term__link:hover { color: var(--accent); text-decoration: none; }
 
 .term__name {
-  font-size: 27px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
@@ -526,7 +527,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   font-variant-numeric: tabular-nums;
 }
 
-.archive-entry__title { font-size: 16px; }
+.archive-entry__title { font-size: 14px; }
 .archive-entry__title--micro { color: var(--ink-secondary); }
 
 @media (max-width: 600px) {
@@ -575,7 +576,7 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   background: none;
   color: var(--ink-secondary);
   font-family: inherit;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
 }
 .button:hover,
@@ -604,15 +605,68 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   padding: 32px 0;
 }
 
+/* altstore.io's footer block: icon beside three columns, 900px wide. */
+.site-footer__brand {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: flex-start;
+  gap: 70px;
+}
+
+.site-footer__icon { flex: none; }
+.site-footer__icon img {
+  display: block;
+  width: 100px;
+  height: auto;   /* the PNG is already a squircle — no border-radius */
+}
+
+.site-footer__cols {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 40px 70px;
+}
+
+.footer-block { display: flex; flex-direction: column; }
+
+.footer-block__title {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer-link {
+  color: var(--accent);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.site-footer__copyright {
+  margin: 40px 0 0;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+}
+
 .site-footer__inner {
   max-width: var(--measure);
-  margin: 0 auto;
+  margin: 24px auto 0;
   padding: 0 var(--gutter);
   color: var(--ink-tertiary);
   font-size: 14px;
+  text-align: center;
 }
 
 .site-footer p { margin: 0 0 6px; }
+
+@media (max-width: 760px) {
+  .site-footer__brand { flex-direction: column; gap: 28px; }
+  .site-footer__cols { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+}
 
 /* --- Responsive ----------------------------------------------------------- */
 
@@ -622,12 +676,12 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
     gap: 16px;
   }
   .story__image img { aspect-ratio: 16 / 9; }
-  .stories__item--lead .story__title { font-size: 30px; }
+  .stories__item--lead .story__title { font-size: 25px; }
 }
 
 @media (max-width: 600px) {
   /* Sumo holds its 18px base on small screens; only display headings step down. */
-  .standfirst { font-size: 19px; }
+  .standfirst { font-size: 16px; }
   .article-header { padding-top: 32px; }
   .article-hero { margin-bottom: 28px; }
   .article-hero img { max-height: 50vh; }
@@ -639,9 +693,9 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   .site-social a { width: 24px; height: 24px; }
   .site-archive { font-size: 16px; }
 
-  .story__title { font-size: 23px; }
-  .category-title { font-size: 30px; }
-  .term__name { font-size: 23px; }
+  .story__title { font-size: 19px; }
+  .category-title { font-size: 25px; }
+  .term__name { font-size: 19px; }
   .stories { padding-top: 32px; }
 }
 

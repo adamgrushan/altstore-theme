@@ -1,4 +1,37 @@
 <footer class="site-footer">
+
+  {{/* altstore.io's footer: app icon beside three link columns. */}}
+  <div class="site-footer__brand">
+    <a class="site-footer__icon" href="https://altstore.io">
+      <img src="{{ "images/AltAppIcon.png" | relURL }}" alt="AltStore" width="100" height="100">
+    </a>
+
+    <div class="site-footer__cols">
+      <div class="footer-block">
+        <p class="footer-block__title">Contact Us</p>
+        <a class="footer-link" href="mailto:admin@altstore.io">Business Inquiries</a>
+        <a class="footer-link" href="mailto:press@altstore.io">Press</a>
+        <a class="footer-link" href="mailto:admin@altstore.io">Developers</a>
+        <a class="footer-link" href="https://altstore.io/report-app.html" target="_blank" rel="noopener">Report an App</a>
+      </div>
+
+      <div class="footer-block">
+        <p class="footer-block__title">Resources</p>
+        <a class="footer-link" href="https://faq.altstore.io/" target="_blank" rel="noopener">User Guide</a>
+        <a class="footer-link" href="https://faq.altstore.io/developers/distribute-with-altstore-pal" target="_blank" rel="noopener">How To Distribute Apps</a>
+        <a class="footer-link" href="https://altstore.io/developer-terms.html" target="_blank" rel="noopener">Developer Terms</a>
+        <a class="footer-link" href="https://altstore.io/app-guidelines.html" target="_blank" rel="noopener">App Submission Guidelines</a>
+      </div>
+
+      <div class="footer-block">
+        <p class="footer-block__title">About</p>
+        <a class="footer-link" href="https://altstore.io/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="site-footer__copyright">Copyright © 2024 AltStore</p>
+
   <div class="site-footer__inner">
     {{ if templates.Exists "partials/microhook-footer.html" }}
     {{ partial "microhook-footer.html" . }}
