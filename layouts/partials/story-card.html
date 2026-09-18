@@ -3,11 +3,11 @@
 
 {{ $thumb := "" }}
 {{ with .Params.featured_image }}{{ $thumb = . }}{{ end }}
-{{ if not $thumb }}{{ range first 1 .Params.photos }}{{ $thumb = . }}{{ end }}{{ end }}
+{{ if not $thumb }}{{ with .Params.photos }}{{ range first 1 . }}{{ $thumb = . }}{{ end }}{{ end }}{{ end }}
 
 {{ $kicker := "" }}
 {{ with .Params.kicker }}{{ $kicker = . }}{{ end }}
-{{ if not $kicker }}{{ range first 1 .Params.categories }}{{ $kicker = . }}{{ end }}{{ end }}
+{{ if not $kicker }}{{ with .Params.categories }}{{ range first 1 . }}{{ $kicker = . }}{{ end }}{{ end }}{{ end }}
 
 <article class="story h-entry {{ if .Title }}story--titled{{ else }}story--micro{{ end }}">
 

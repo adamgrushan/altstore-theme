@@ -23,10 +23,10 @@
     <meta name="description" content="{{ $description }}">
     <meta name="twitter:description" content="{{ $description | truncate 125 }}">
     <meta property="og:description" content="{{ $description | truncate 125 }}">
-    {{- range first 1 .Params.photos -}}
+    {{- with .Params.photos -}}{{- range first 1 . -}}
       <meta name="twitter:image" content="{{ . }}">
       <meta property="og:image" content="{{ . }}">
-    {{- end -}}
+    {{- end -}}{{- end -}}
   {{- end -}}
 
   <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ delimit (split (.Summary | plainify | htmlUnescape) " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}{{ end }}</title>

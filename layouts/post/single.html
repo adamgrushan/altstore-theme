@@ -3,12 +3,12 @@
 {{/* Hero image: an explicit featured_image wins, otherwise the post's first photo. */}}
 {{ $hero := "" }}
 {{ with .Params.featured_image }}{{ $hero = . }}{{ end }}
-{{ if not $hero }}{{ range first 1 .Params.photos }}{{ $hero = . }}{{ end }}{{ end }}
+{{ if not $hero }}{{ with .Params.photos }}{{ range first 1 . }}{{ $hero = . }}{{ end }}{{ end }}{{ end }}
 
 {{/* Kicker: an explicit kicker param wins, otherwise the first category. */}}
 {{ $kicker := "" }}
 {{ with .Params.kicker }}{{ $kicker = . }}{{ end }}
-{{ if not $kicker }}{{ range first 1 .Params.categories }}{{ $kicker = . }}{{ end }}{{ end }}
+{{ if not $kicker }}{{ with .Params.categories }}{{ range first 1 . }}{{ $kicker = . }}{{ end }}{{ end }}{{ end }}
 
 <article class="article h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
 
