@@ -1,4 +1,4 @@
-{{/* Share row: one tap per destination, Apple Newsroom style. */}}
+{{/* Share row: one tap per destination. */}}
 {{ $url := .Permalink }}
 {{ $title := .Title | default (.Summary | plainify | truncate 70) }}
 {{ $text := printf "%s %s" $title $url }}
