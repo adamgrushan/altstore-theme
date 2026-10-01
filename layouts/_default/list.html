@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{ if templates.Exists "partials/microhook-archive-post-list.html" }}
+{{ partial "microhook-archive-post-list.html" . }}
+{{ else }}
+
+<div class="archive h-feed">
+  <header class="archive-header">
+    <h1 class="p-name category-title">{{ .Title }}</h1>
+    {{ if templates.Exists "partials/microhook-category-header.html" }}
+    {{ partial "microhook-category-header.html" . }}
+    {{ end }}
+    {{ with .Content }}<div class="microblog_category_intro">{{ . }}</div>{{ end }}
+  </header>
+
+  {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") }}
+
+  <div class="stories">
+    {{ range $paginator.Pages }}
+    <div class="stories__item">
+      {{ partial "story-card.html" . }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ if templates.Exists "partials/microhook-pagination.html" }}
+{{ partial "microhook-pagination.html" . }}
+{{ else }}
+<nav class="post-nav" aria-label="Pagination">
+  {{ if $paginator.HasPrev }}
+  <a class="button" href="{{ $paginator.Prev.URL }}">← {{ T "Newer" }}</a>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <a class="button" href="{{ $paginator.Next.URL }}">{{ T "Older" }} →</a>
+  {{ end }}
+</nav>
+{{ end }}
+
+{{ end }}
+{{ end }}

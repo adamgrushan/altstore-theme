@@ -1,0 +1,56 @@
+{{ define "main" }}
+{{ if templates.Exists "partials/microhook-archive-post-list.html" }}
+{{ partial "microhook-archive-post-list.html" . }}
+{{ else }}
+
+<div class="archive">
+  <header class="archive-header">
+    <h1 class="p-name category-title">{{ .Title }}</h1>
+    {{ if templates.Exists "partials/microhook-category-header.html" }}
+    {{ partial "microhook-category-header.html" . }}
+    {{ end }}
+    {{ with .Content }}<div class="microblog_category_intro">{{ . }}</div>{{ end }}
+  </header>
+
+  {{ $terms := .Data.Terms.Alphabetical }}
+
+  {{ if $terms }}
+  <ul class="term-list">
+    {{ range $terms }}
+
+    {{/* Prefer the real term page; fall back to a constructed URL on older Hugo. */}}
+    {{ $name := .Name }}
+    {{ $url := printf "/%s/%s/" $.Data.Plural ($name | urlize) | relURL }}
+    {{ with .Page }}
+      {{ $url = .RelPermalink }}
+      {{ with .Title }}{{ $name = . }}{{ end }}
+    {{ end }}
+
+    <li class="term">
+      <a class="term__link" href="{{ $url }}">
+        <span class="term__name">{{ $name }}</span>
+        <span class="term__count">{{ .Count }}</span>
+      </a>
+
+      {{ with .Page }}
+      {{ with .Pages.ByDate.Reverse }}
+      {{ $recent := index . 0 }}
+      <p class="term__recent">
+        <a href="{{ $recent.RelPermalink }}">
+          {{ with $recent.Title }}{{ . }}{{ else }}{{ $recent.Summary | plainify | truncate 70 }}{{ end }}
+        </a>
+        <span class="term__date">{{ partial "dateformat/short" $recent }}</span>
+      </p>
+      {{ end }}
+      {{ end }}
+    </li>
+
+    {{ end }}
+  </ul>
+  {{ else }}
+  <div class="stories"><p class="term-empty">Nothing filed here yet.</p></div>
+  {{ end }}
+</div>
+
+{{ end }}
+{{ end }}

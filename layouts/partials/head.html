@@ -1,0 +1,55 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary_large_image">
+
+  {{- with .Title -}}
+    <meta name="twitter:title" content="{{ . }}">
+    <meta property="og:title" content="{{ . }}">
+  {{ else }}
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta property="og:title" content="{{ .Site.Title }}">
+  {{ end }}
+
+  {{ if .IsHome }}
+    <meta name="description" content="{{ .Site.Params.itunes_description }}">
+    <meta name="twitter:description" content="{{ .Site.Params.itunes_description | truncate 125 }}">
+    <meta property="og:description" content="{{ .Site.Params.itunes_description | truncate 125 }}">
+  {{ else }}
+    {{ $description := .Summary }}
+    {{ with .Params.summary }}{{ $description = . | markdownify }}{{ end }}
+    {{ $description = $description | plainify | htmlUnescape }}
+    <meta name="description" content="{{ $description }}">
+    <meta name="twitter:description" content="{{ $description | truncate 125 }}">
+    <meta property="og:description" content="{{ $description | truncate 125 }}">
+    {{- with partial "first-value.html" .Params.photos -}}
+      <meta name="twitter:image" content="{{ . }}">
+      <meta property="og:image" content="{{ . }}">
+    {{- end -}}
+  {{- end -}}
+
+  <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ delimit (split (.Summary | plainify | htmlUnescape) " " | first 5) " " }} … | {{ .Site.Title }}{{ end }}{{ end }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+  {{ if templates.Exists "partials/microhook-uncss.html" }}
+    {{ partial "microhook-uncss.html" . }}
+  {{ else }}
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+  {{ end }}
+
+  {{/* Micro.blog's favicon is the avatar flattened to a square; drop it for
+       altstore.io's own rounded one below. */}}
+  {{ partial "microblog_head.html" . | replaceRE `<link rel="(shortcut )?icon"[^>]*>\s*` "" | safeHTML }}
+
+  <link rel="icon" href="{{ "images/favicon.png" | relURL }}" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ "images/webclip.png" | relURL }}">
+
+  {{- if templates.Exists "partials/microhook-head.html" -}}
+    {{ partial "microhook-head.html" . }}
+  {{ end }}
+</head>

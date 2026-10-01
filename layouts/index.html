@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{ if templates.Exists "partials/microhook-post-list.html" }}
+{{ partial "microhook-post-list.html" . }}
+{{ else }}
+
+{{ if templates.Exists "partials/microhook-before-post-list.html" }}
+{{ partial "microhook-before-post-list.html" . }}
+{{ end }}
+
+{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
+
+<div class="stories h-feed">
+  {{ range $index, $page := $paginator.Pages }}
+    {{ if and (eq $index 0) $paginator.HasPrev | not }}
+      {{/* first page, first post: lead slot */}}
+    {{ end }}
+    <div class="stories__item {{ if and (eq $index 0) (not $paginator.HasPrev) }}stories__item--lead{{ end }}">
+      {{ partial "story-card.html" $page }}
+    </div>
+  {{ end }}
+</div>
+
+{{ if templates.Exists "partials/microhook-after-post-list.html" }}
+{{ partial "microhook-after-post-list.html" . }}
+{{ end }}
+
+{{ if templates.Exists "partials/microhook-pagination.html" }}
+{{ partial "microhook-pagination.html" . }}
+{{ else }}
+<nav class="post-nav" aria-label="Pagination">
+  {{ if $paginator.HasPrev }}
+  <a class="button" href="{{ $paginator.Prev.URL }}">← {{ T "Newer" }}</a>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <a class="button" href="{{ $paginator.Next.URL }}">{{ T "Older" }} →</a>
+  {{ end }}
+</nav>
+{{ end }}
+
+{{ end }}
+{{ end }}
